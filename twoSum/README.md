@@ -1,4 +1,4 @@
-# 1.twoSum
+# 1.twoSum (easy)
 
 ### HashMap
 
