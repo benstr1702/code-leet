@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chart.js Scatter Plot</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+		<style>
+			.chart-container {
+				width: 600px;
+				height: 400px;
+				margin: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="chart-container">
+			<canvas id="scatterChart"></canvas>
+		</div>
+		<script>
+			// Original points data
+			const points = [
+				{ x: 0, y: 1 },
+				{ x: 1, y: 8 },
+				{ x: 2, y: 6 },
+				{ x: 3, y: 2 },
+				{ x: 4, y: 5 },
+				{ x: 5, y: 4 },
+				{ x: 6, y: 8 },
+				{ x: 7, y: 3 },
+				{ x: 8, y: 7 },
+			];
+
+			// Create vertical lines data
+			const verticalLines = points.flatMap((point) => [
+				{ x: point.x, y: 0 }, // Start point at x-axis
+				{ x: point.x, y: point.y }, // End point at data point
+				{ x: null, y: null }, // Break the line
+			]);
+
+			const data = {
+				datasets: [
+					{
+						// Vertical lines
+						label: "Vertical Lines",
+						data: verticalLines,
+						showLine: true,
+						borderColor: "rgba(75, 192, 192, 0.3)",
+						pointRadius: 0,
+						fill: false,
+					},
+					{
+						label: "Connected Points",
+						data: points,
+						backgroundColor: "rgb(75, 192, 192)",
+						borderColor: "rgb(75, 192, 192)",
+						pointRadius: 6,
+						pointHoverRadius: 8,
+					},
+				],
+			};
+
+			const config = {
+				type: "scatter",
+				data: data,
+				options: {
+					responsive: true,
+					plugins: {
+						title: {
+							display: true,
+							text: "Scatter Plot with Vertical Lines",
+						},
+						legend: {
+							display: false, // Hide the legend since we don't need it
+						},
+						tooltip: {
+							callbacks: {
+								label: function (context) {
+									if (context.datasetIndex === 1) {
+										// Only show tooltips for points
+										return `(${context.parsed.x}, ${context.parsed.y})`;
+									}
+									return null;
+								},
+							},
+						},
+					},
+					scales: {
+						x: {
+							title: {
+								display: true,
+								text: "X Axis",
+							},
+							grid: {
+								display: true,
+							},
+						},
+						y: {
+							title: {
+								display: true,
+								text: "Y Axis",
+							},
+							grid: {
+								display: true,
+							},
+							beginAtZero: true,
+						},
+					},
+				},
+			};
+			// Create the chart
+			const ctx = document.getElementById("scatterChart");
+			new Chart(ctx, config);
+		</script>
+	</body>
+</html>
