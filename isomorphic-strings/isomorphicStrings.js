@@ -10,7 +10,6 @@ function isIsomorphic(s, t) {
 		// Check for consistency in both mappings
 		if (sToT.has(charS) && sToT.get(charS) !== charT) return false;
 		if (tToS.has(charT) && tToS.get(charT) !== charS) return false;
-		console.log("both match");
 
 		// Add mappings if they don't exist
 		sToT.set(charS, charT);
