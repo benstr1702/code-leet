@@ -1,7 +1,7 @@
 const {
 	convertArrayToTree,
 	TreeNode,
-} = require("./count-complete-tree-nodes/countCompleteTreeNodes");
+} = require("../count-complete-tree-nodes/countCompleteTreeNodes");
 function BreadthFirstSearch(root) {
 	if (!root) return []; // return an empty array if the tree is empty
 
