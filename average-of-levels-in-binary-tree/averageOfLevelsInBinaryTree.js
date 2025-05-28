@@ -1,4 +1,4 @@
-const { convertArrayToTree, TreeNode } = require("../util/convertArrayToTree");
+const { convertArrayToTree } = require("../util/convertArrayToTree");
 /**
  *
  * Definition for a binary tree node.
