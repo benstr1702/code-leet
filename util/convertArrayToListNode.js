@@ -33,6 +33,7 @@ function convertArrayToLinkedList(array) {
 
 	// Loop through the array starting from the second element (index 1),
 	// as the first element was already used to create the head.
+	// The corrected loop is shown below.
 
 	for (let i = 1; i < array.length; i++) {
 		// Create a new ListNode for the current array element.
