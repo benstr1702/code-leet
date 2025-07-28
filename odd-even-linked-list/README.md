@@ -57,7 +57,7 @@ You must solve the problem in **O(1)** extra space complexity and **O(n)** time 
 ## Solution Code
 
 ```javascript
-const oddEvenList = (head) => {
+const oddEvenList = (head) => {	
     if (!head || !head.next) return head;
 
     let odd = head;
